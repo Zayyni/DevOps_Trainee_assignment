@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CPU Usage Moniter</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.0.3/socket.io.js"></script>
+    <style>
+        h1{
+          color: blue;  
+        }
+        #cpu_usage{
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <h1>Assignment by Zain Ul Islam - DevOps Trainee</h1>
+    <h2>CPU Usage Moniter</h2>
+    <div id="cpu_usage"></div>
+    <script>
+        var socket = io.connect('http://'+document.domain+ ':'+location.port);
+        socket.on('cpu_usage',function(msg){
+            document.getElementById('cpu_usage').innerHTML= 'Real Time CPU Usage : ' + msg.usageData+'%';
+        });
+    </script>
+    
+</body>
+</html>
